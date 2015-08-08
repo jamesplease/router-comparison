@@ -17,7 +17,7 @@ Feature             | Backbone | Ember | React | UI-Router | Stateman | StateRou
 DSL                 | ✔        | ✔     | ✔     | ✔         | ✔        | ✔
 Regex for `:dynamic`| ✘        | ✘     | ✘     | ✔         | ✔        | ✘
 Splats              | ✔        | ✔     | ✔     | ✘         | ✘        | ✔
-Optional segments   | ✔        | ✘     | ✔     | ✘*        | ✘*       | ?
+Optional segments   | ✔        | ✘     | ✔     | ✘*        | ✘*       | ✘
 404 abstraction     | ✘        | ✘     | ✔     | ✔         | ✔        | ✘
 Regex instead of DSL| ✔        | ✘     | ✘     | ✘         | ✘        | ✘
 Asynchronous        | ✘*       | ✔     | ✔     | ✔         | ✔        | ✔
@@ -27,14 +27,18 @@ Nested routes       | ✘        | ✔     | ✔     | ✔         | ✔        
 Reusable routes     | ✘        | ✔     | ?     | ?         | ?        | ✘  
 Optional history    | ✘        | ✔     | ✘     | ✔         | ✘        | ✔
 Includes history    | ✔        | ✔     | ✔     | ?         | ✔        | ✘
-Cancel navigation   | ✘*       | ✔     | ?     | ✔         | ?        | ✔
-Redirect navigation | ✔        | ✔     | ✔     | ?         | ?        | ✔
-`.active` links     | ✘        | ✔     | ✔     | ?         | ?        | ✘
-Template links      | ✘        | ✔     | ✔     | ✔         | ?        | ✘
-Query params        | ?        | ?     | ?     | ?         | ?        | ?
-'Index' routes      | ?        | ✔     | ✔     | ?         | ?        | ? 
-Scrolling           | ✘        | ✘     | ✔     | ✘*        | ✘        | ✘
-Group data fetching | ✘        | ✔     | ?     | ✘         | ✘        | ✘ 
+Cancel navigation   | ✘*       | ✔     | ✔     | ✔         | ✔        | ✔
+Redirect navigation | ✔        | ✔     | ✔     | ✔*        | ✔        | ✔
+`.active` links     | ✘        | ✔     | ✔     | ✘         | ✘        | ✘
+Template links      | ✘        | ✔     | ✔     | ✔         | ✘        | ✘
+Query params        | ✘        | ✔     | ✔     | ✔         | ✔        | ✔
+'Index' states      | ✘        | ✔     | ✔     | ✘         | ✘        | ✔ 
+'Loading' states    | ✘        | ✔     | ✘     | ✘         | ✘        | ✔
+'Error' states      | ✘        | ✔     | ✘     | ✘*        | ✘*       | ✔
+'Abstract' states   | ✘        | ✘     | ✘     | ✔         | ✘        | ✘
+Pubsub              | ✔        | ✘     | ✘     | ✔         | ✔        | ✘
+Scrolling           | ✘        | ✘     | ✔     | ✘*        | ✘        | ?
+Group data fetching | ✘        | ✔     | ✔*    | ✘         | ✘        | ✘ 
 
 \* Refer to the corresponding section below to see notes.
 
