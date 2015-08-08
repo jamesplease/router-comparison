@@ -27,10 +27,10 @@ Nested routes       | ✘        | ✔     | ✔     | ✔         | ✔        
 Reusable routes     | ✘        | ✔     | ?     | ?         | ?        | ✘  
 Optional history    | ✘        | ✔     | ✘     | ✔         | ✘        | ✔
 Includes history    | ✔        | ✔     | ✔     | ?         | ✔        | ✘
-Cancel navigation   | ✘*       | ✔     | ✔     | ✔         | ✔        | ✔
+Cancel navigation   | ✔*       | ✔     | ✔     | ✔         | ✔        | ✔
 Redirect navigation | ✔        | ✔     | ✔     | ✔*        | ✔        | ✔
-`.active` links     | ✘        | ✔     | ✔     | ✘         | ✘        | ✘
 Template links      | ✘        | ✔     | ✔     | ✔         | ✘        | ✘
+`.active` links     | ✘        | ✔     | ✔     | ✘         | ✘        | ✘
 Query params        | ✘        | ✔     | ✔     | ✔         | ✔        | ✔
 'Index' states      | ✘        | ✔     | ✔     | ✘         | ✘        | ✔ 
 'Loading' states    | ✘        | ✔     | ✘     | ✘         | ✘        | ✔
@@ -161,19 +161,108 @@ Backbone is the exception here.
 
 #### Reusable routes
 
+Coming soon...
+
 #### Optional history
+
+Because a nested router is just a state machine, it should not need history to function. This is
+useful in apps that don't encode the location of the user in the URL, like embedded apps.
+
+Interestingly, Ember and the UI-Router are the only two that support this feature. The two libraries
+that were inspired by these libraries, React's Router and Stateman, seem to have foregone including this
+feature.
 
 #### Includes history
 
+Whether or not the library includes a History implementation (to support, say, hash changes in old
+browsers).
+
+Generally, the routers that are bundled with a framework do include a history implementation. This also
+makes since given that they're all designed to work with 
+
 #### Cancel navigation
+
+Whether or not there's an abstraction for canceling navigation.
+
+In Ember and React Router, you get the opportunity for each route to specify whether the transition
+should be cancelled or not.
+
+In UI-Router and Stateman, an event is fired on the router itself that allows you to cancel the transition,
+so it's more like a global setting.
+
+Backbone provides a method that you can return false from to prevent transitioning.
 
 #### Redirect navigation
 
+Very similar to the above: can you stop the transition and instead redirect? The same hooks used for canceling
+is used for redirection in all libraries.
+
+The UI-Router had a few bugs with redirecting the last time I used it, and I do not believe that they have been fixed.
+
+#### Template links
+
+Some libraries provide an abstraction to be used in your template to generate links that are automagically hooked up
+to the router.
+
+This feature is super rad, if you haven't used it before!
+
 #### `.active` links
+
+Does the router automatically append an active class to the links in the template when that state is entered?
 
 #### Query params
 
-#### `Index` routes
+#### 'Index' states
+
+Index states provide you a different state to enter when a state is landed upon directly,
+versus when that state is activated by a child state.
+
+For instance,
+
+`books`
+`books.index`
+`books.book`
+
+Given these states, landing on "books" will activate both books and books.index.
+
+Landing on "books.book" will activate "books" and "books.book", but not "books.index"
+
+#### 'Loading' states
+
+While transitions are in progress some routers give you a `loading` state to display.
+
+#### 'Error' states
+
+When an error occurs when doing a transition, some routers allow you to specify an `error` state to enter.
+
+#### 'Abstract' states
+
+Abstract states are about as difficult to wrap your head around as index states are. Abstract states are
+states that they, themselves, cannot be activated. Instead, they're activated when their child states are.
+
+This gives you a hook to, say, load a particular set of data for a group of sibling routes.
+
+#### Pubsub
+
+Whether or not you can do something like:
+
+`router.on('event', myCallback)`
+
+These routers are generally the ones that give you global hooks to catch errors and 404 states. Those hooks
+are these events.
+
+#### Scrolling
+
+Browsers remember your scroll position when you navigate an app with the Back and Forward buttons. They also
+scroll you to the top of the page when a new link is clicked.
+
+This feature is about whether or not the router supports this out of the box.
+
+The UI-Router is pretty weird, in this regard: it allows you to scroll to a particular element when the route changes.
+
+#### Group data fetching
+
+If 3 routes are activated, and each specify data to be fetched, does all of the fetching happen before views start rendering?
 
 ### Omissions
 
