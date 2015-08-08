@@ -39,6 +39,9 @@ Query params        | ✘        | ✔     | ✔     | ✔         | ✔        
 Pubsub              | ✔        | ✘     | ✘     | ✔         | ✔        | ✘
 Scrolling           | ✘        | ✘     | ✔     | ✘*        | ✘        | ?
 Group data fetching | ✘        | ✔     | ✔*    | ✘         | ✘        | ✘ 
+Enter hook          | ✔        | ✔     | ✔*    | ✔         | ✔        | ✔ 
+Exit hook           | ✘        | ✔     | ✘     | ✔         | ✔        | ✔ 
+Update hook         | ✘        | ✔     | ✘     | ✘         | ✔        | ✔ 
 
 \* Refer to the corresponding section below to see notes.
 
@@ -263,6 +266,33 @@ The UI-Router is pretty weird, in this regard: it allows you to scroll to a part
 #### Group data fetching
 
 If 3 routes are activated, and each specify data to be fetched, does all of the fetching happen before views start rendering?
+
+#### Enter hook
+
+Does a callback fire when the route is entered?
+
+In Backbone, this is all that you get.
+
+In React, from what I understand it sort of just implicitly renders the component. I'm not sure if there's much else that you'd want to do (or could do),
+but I'm only gathering this from their docs, as I haven't used their router.
+
+#### Exit hook
+
+When a route is being transitioned out, do you get a hook to do things?
+
+One thing to note is that this seems to be conflated with the ability to cancel/redirect in certain routers. In the React Router, for instance,
+there's no distinct "exit" hook, but there is a hook called before you leave, which is intended for canceling. I don't know enough about React
+to know whether this is a good or a bad thing!
+
+#### Update hook
+
+An update hook is distinct from an enter hook, in that it is generally related to whether the "context" of a route changes. Consider a route
+with a URL `:bookId`. When the user transitions to this same route, but with a different ID, what happens?
+
+In some routers, the "enter" hook is called again. In other routers, only the "update" route is triggered.
+
+In Stateman, the update hook is called for every route in the tree of active routes. Ember only fires it on routes that explicitly
+have had a context change.
 
 ### Omissions
 
