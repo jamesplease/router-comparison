@@ -1,6 +1,7 @@
 # router-comparison
 
-Wtf even are routers? This repository is an attempt to answer that question.
+Wtf even are routers? This repository is an attempt to address that question by comparing the
+features of the most popular client side routers.
 
 ## Table of Contents
 
