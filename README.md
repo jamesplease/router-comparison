@@ -22,7 +22,7 @@ features of the most popular client side routers.
   - [Sort: specificity](#sort-specificity)
   - [Sort: order added](#sort-order-added)
   - [Nested routes](#nested-routes)
-  - [Reusable routes](#reusable-routes)
+  - [Reset namespace](#reset-namespace)
   - [Optional history](#optional-history)
   - [Includes history](#includes-history)
   - [Cancel navigation](#cancel-navigation)
@@ -376,17 +376,20 @@ Backbone is the exception here.
 
 All contemporary routers support nesting because it is a super useful feature!
 
-### Reusable routes
+### Reset Namespace
 
 Backbone | Ember | React | UI-Router | Stateman | StateRouter
 -------- | ----- | ----- | --------- | -------- | -----------
-✘        | ✔     | ?     | ?         | ?        | ✘  
+✘        | ✔     | ✘     | ✘         | ✘        | ✘  
 
-Coming soon...
+Most routers require that children routes be built from their parent's namespace. For instance, if
+you want to add a child route to `books.book`, it must necessarily begin with `books.book`. A route
+called `comments` could not, for instance, be a child of `books.book`.
 
 ##### Thoughts
 
-Also coming soon :speak_no_evil:
+I don't think that this is particularly useful. A friend of mine on the Ember Data team suggests
+that nobody use this feature, which is pretty telling, I think.
 
 ### Optional history
 
