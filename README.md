@@ -559,10 +559,13 @@ enter.
 
 Backbone | Ember | React | UI-Router | Stateman | StateRouter
 -------- | ----- | ----- | --------- | -------- | -----------
-✘        | ✘     | ✔     | ✘         | ✘        | ✔
+✘        | ✘     | ✔     | ✘         | ✔*       | ✔
 
 Not found states let you specify unique not found states for each portion of your
 application.
+
+Stateman provides a not found state that only exists on the root level, so it's substantially
+less useful than what is provided by React.
 
 ##### Thoughts
 
