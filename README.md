@@ -12,7 +12,7 @@ to compare them.
 
 A description of each feature can be found below the table.
 
-Feature             | Backbone | Ember | React | UI-Router | Stateman | StateRouter
+Feature             | [Backbone](http://backbonejs.org/#Router) | [Ember](http://guides.emberjs.com/v1.10.0/routing/) | [React](https://github.com/rackt/react-router) | [UI-Router](https://github.com/angular-ui/ui-router) | [Stateman](https://github.com/leeluolee/stateman) | StateRouter**
 ------------------- | -------- | ----- | ----- | --------- | -------- | -----------
 DSL                 | ✔        | ✔     | ✔     | ✔         | ✔        | ✔
 Regex for `:dynamic`| ✘        | ✘     | ✘     | ✔         | ✔        | ✘
@@ -44,6 +44,8 @@ Exit hook           | ✘        | ✔     | ✘     | ✔         | ✔        
 Update hook         | ✘        | ✔     | ✘     | ✘         | ✔        | ✔ 
 
 \* Refer to the corresponding section below to see notes.
+
+\*\* StateRouter is a router I am building to be used by libraries that don't provide a nested router, like Backbone.
 
 ### Features
 
