@@ -2,6 +2,8 @@
 
 Wtf even are routers? This repository is an attempt to answer that question.
 
+## Table of Contents
+
 - [About](#about)
 - [Why](#)
 - [Routers Compared](#routers-compared)
