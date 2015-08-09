@@ -91,6 +91,10 @@ Update hook         | ✘        | ✔     | ✘     | ✘         | ✔        
 
 #### DSL
 
+Backbone | Ember | React | UI-Router | Stateman | StateRouter
+-------- | ----- | ----- | --------- | -------- | -----------
+✔        | ✔     | ✔     | ✔         | ✔        | ✔
+
 A DSL is a domain specific language. If you haven't heard that term before, don't worry: it's a concept you may already
 be familiar with, even if you don't know the name. An example of a DSL are the templating languages we use to output HTML,
 like Handlebars, Underscore, or Angular templates.
@@ -109,6 +113,10 @@ DSLs are a no-brainer! The alternative would be writing regular expressions for 
 much every router supports their own DSL, it seems like everyone is in agreement on this point.
 
 #### Regex for `:dynamic`
+
+Backbone | Ember | React | UI-Router | Stateman | StateRouter
+-------- | ----- | ----- | --------- | -------- | -----------
+✘        | ✘     | ✘     | ✔         | ✔        | ✘
 
 Dynamic parts capture a single URL segment within a path. A URL segment are each of the sections separated by `/`. So,
 for instance, in the URL `"/books/2"`, there are two segments: `books` and `2`.
@@ -135,6 +143,10 @@ I think that this feature provides great value.
 
 #### Splats
 
+Backbone | Ember | React | UI-Router | Stateman | StateRouter
+-------- | ----- | ----- | --------- | -------- | -----------
+✔        | ✔     | ✔     | ✔         | ✘        | ✔
+
 Splats can be used to capture more than one segment of the URL, and are a denoted by a `*`. An example is:
 
 `"/users/*splat"`
@@ -158,6 +170,10 @@ router itself.
 
 #### Optional segments
 
+Backbone | Ember | React | UI-Router | Stateman | StateRouter
+-------- | ----- | ----- | --------- | -------- | -----------
+?        | ?     | ?     | ?         | ?        | ?
+
 Optional segments are, well, exactly what you'd expect. Segments that don't need to be there. They're generally designated by a `?` or
 parentheses.
 
@@ -167,12 +183,20 @@ An example from Backbone, which uses parentheses:
 
 #### Unnamed segments
 
+Backbone | Ember | React | UI-Router | Stateman | StateRouter
+-------- | ----- | ----- | --------- | -------- | -----------
+?        | ?     | ?     | ?         | ?        | ?
+
 An unnamed segment is a dynamic segment, or a splat, that doesn't require an identifying name. For instance, in the route URL
 `"books/:bookId"`, `bookId` is the name of the dynamic segment.
 
 Stateman added this feature, although it (surprisingly) does not exist in 
 
 #### 404 abstraction
+
+Backbone | Ember | React | UI-Router | Stateman | StateRouter
+-------- | ----- | ----- | --------- | -------- | -----------
+?        | ?     | ?     | ?         | ?        | ?
 
 A 404 abstraction is anything other than splats to designate not found pages. The alternatives are:
 
@@ -181,11 +205,19 @@ A 404 abstraction is anything other than splats to designate not found pages. Th
 
 #### Regex instead of DSL
 
+Backbone | Ember | React | UI-Router | Stateman | StateRouter
+-------- | ----- | ----- | --------- | -------- | -----------
+?        | ?     | ?     | ?         | ?        | ?
+
 Backbone lets you write a regular expression instead of the DSL. As you would expect, this gets ugly quickly. Because of the small
 amount of code necessary to implement the feature, it does fit in with Backbone's minimalist ideas. It's comparable, I think, to
 allowing regex in the dynamic segments.
 
 #### Asynchronous
+
+Backbone | Ember | React | UI-Router | Stateman | StateRouter
+-------- | ----- | ----- | --------- | -------- | -----------
+?        | ?     | ?     | ?         | ?        | ?
 
 Whether or not the route handlers are asynchronous. This is important for routers that support nesting, because you'll often
 be fetching data in your handlers.
@@ -194,6 +226,10 @@ Backbone is listed as not supporting this, but I want to clarify what I mean. Be
 it simply doesn't matter if your callback is asynchronous or synchronous: nothing depends on them (out of the box).
 
 #### Sort: specificity
+
+Backbone | Ember | React | UI-Router | Stateman | StateRouter
+-------- | ----- | ----- | --------- | -------- | -----------
+?        | ?     | ?     | ?         | ?        | ?
 
 Route resolution is an important component of any router. If the user has two routes:
 
@@ -213,10 +249,18 @@ Ember is the only router that I know of to support the proper algorithm to suppo
 
 #### Sort: order added
 
+Backbone | Ember | React | UI-Router | Stateman | StateRouter
+-------- | ----- | ----- | --------- | -------- | -----------
+?        | ?     | ?     | ?         | ?        | ?
+
 All other routers sort by the order added. Therefore, you must specify your dynamic segments and
 splats last, or use regexes to restrict what your dynamic segments match.
 
 #### Nested routes
+
+Backbone | Ember | React | UI-Router | Stateman | StateRouter
+-------- | ----- | ----- | --------- | -------- | -----------
+?        | ?     | ?     | ?         | ?        | ?
 
 Are the routes related? Does entering a child route cause you to first enter the parent route? If yes,
 then it's a nested router.
@@ -228,9 +272,17 @@ Backbone is the exception here.
 
 #### Reusable routes
 
+Backbone | Ember | React | UI-Router | Stateman | StateRouter
+-------- | ----- | ----- | --------- | -------- | -----------
+?        | ?     | ?     | ?         | ?        | ?
+
 Coming soon...
 
 #### Optional history
+
+Backbone | Ember | React | UI-Router | Stateman | StateRouter
+-------- | ----- | ----- | --------- | -------- | -----------
+?        | ?     | ?     | ?         | ?        | ?
 
 Because a nested router is just a state machine, it should not need history to function. This is
 useful in apps that don't encode the location of the user in the URL, like embedded apps.
@@ -241,6 +293,10 @@ feature.
 
 #### Includes history
 
+Backbone | Ember | React | UI-Router | Stateman | StateRouter
+-------- | ----- | ----- | --------- | -------- | -----------
+?        | ?     | ?     | ?         | ?        | ?
+
 Whether or not the library includes a History implementation (to support, say, hash changes in old
 browsers).
 
@@ -248,6 +304,10 @@ Generally, the routers that are bundled with a framework do include a history im
 makes since given that they're all designed to work with 
 
 #### Cancel navigation
+
+Backbone | Ember | React | UI-Router | Stateman | StateRouter
+-------- | ----- | ----- | --------- | -------- | -----------
+?        | ?     | ?     | ?         | ?        | ?
 
 Whether or not there's an abstraction for canceling navigation.
 
@@ -261,12 +321,20 @@ Backbone provides a method that you can return false from to prevent transitioni
 
 #### Redirect navigation
 
+Backbone | Ember | React | UI-Router | Stateman | StateRouter
+-------- | ----- | ----- | --------- | -------- | -----------
+?        | ?     | ?     | ?         | ?        | ?
+
 Very similar to the above: can you stop the transition and instead redirect? The same hooks used for canceling
 is used for redirection in all libraries.
 
 The UI-Router had a few bugs with redirecting the last time I used it, and I do not believe that they have been fixed.
 
 #### Template links
+
+Backbone | Ember | React | UI-Router | Stateman | StateRouter
+-------- | ----- | ----- | --------- | -------- | -----------
+?        | ?     | ?     | ?         | ?        | ?
 
 Some libraries provide an abstraction to be used in your template to generate links that are automagically hooked up
 to the router.
@@ -275,11 +343,25 @@ This feature is super rad, if you haven't used it before!
 
 #### `.active` links
 
+Backbone | Ember | React | UI-Router | Stateman | StateRouter
+-------- | ----- | ----- | --------- | -------- | -----------
+?        | ?     | ?     | ?         | ?        | ?
+
 Does the router automatically append an active class to the links in the template when that state is entered?
 
 #### Query params
 
+Backbone | Ember | React | UI-Router | Stateman | StateRouter
+-------- | ----- | ----- | --------- | -------- | -----------
+?        | ?     | ?     | ?         | ?        | ?
+
+Coming soon...
+
 #### 'Index' states
+
+Backbone | Ember | React | UI-Router | Stateman | StateRouter
+-------- | ----- | ----- | --------- | -------- | -----------
+?        | ?     | ?     | ?         | ?        | ?
 
 Index states provide you a different state to enter when a state is landed upon directly,
 versus when that state is activated by a child state.
@@ -296,13 +378,25 @@ Landing on "books.book" will activate "books" and "books.book", but not "books.i
 
 #### 'Loading' states
 
+Backbone | Ember | React | UI-Router | Stateman | StateRouter
+-------- | ----- | ----- | --------- | -------- | -----------
+?        | ?     | ?     | ?         | ?        | ?
+
 While transitions are in progress some routers give you a `loading` state to display.
 
 #### 'Error' states
 
+Backbone | Ember | React | UI-Router | Stateman | StateRouter
+-------- | ----- | ----- | --------- | -------- | -----------
+?        | ?     | ?     | ?         | ?        | ?
+
 When an error occurs when doing a transition, some routers allow you to specify an `error` state to enter.
 
 #### 'Abstract' states
+
+Backbone | Ember | React | UI-Router | Stateman | StateRouter
+-------- | ----- | ----- | --------- | -------- | -----------
+?        | ?     | ?     | ?         | ?        | ?
 
 Abstract states are about as difficult to wrap your head around as index states are. Abstract states are
 states that they, themselves, cannot be activated. Instead, they're activated when their child states are.
@@ -310,6 +404,10 @@ states that they, themselves, cannot be activated. Instead, they're activated wh
 This gives you a hook to, say, load a particular set of data for a group of sibling routes.
 
 #### Pubsub
+
+Backbone | Ember | React | UI-Router | Stateman | StateRouter
+-------- | ----- | ----- | --------- | -------- | -----------
+?        | ?     | ?     | ?         | ?        | ?
 
 Whether or not you can do something like:
 
@@ -320,6 +418,10 @@ are these events.
 
 #### Scrolling
 
+Backbone | Ember | React | UI-Router | Stateman | StateRouter
+-------- | ----- | ----- | --------- | -------- | -----------
+?        | ?     | ?     | ?         | ?        | ?
+
 Browsers remember your scroll position when you navigate an app with the Back and Forward buttons. They also
 scroll you to the top of the page when a new link is clicked.
 
@@ -329,9 +431,17 @@ The UI-Router is pretty weird, in this regard: it allows you to scroll to a part
 
 #### Group data fetching
 
+Backbone | Ember | React | UI-Router | Stateman | StateRouter
+-------- | ----- | ----- | --------- | -------- | -----------
+?        | ?     | ?     | ?         | ?        | ?
+
 If 3 routes are activated, and each specify data to be fetched, does all of the fetching happen before views start rendering?
 
 #### Enter hook
+
+Backbone | Ember | React | UI-Router | Stateman | StateRouter
+-------- | ----- | ----- | --------- | -------- | -----------
+?        | ?     | ?     | ?         | ?        | ?
 
 Does a callback fire when the route is entered?
 
@@ -342,6 +452,10 @@ but I'm only gathering this from their docs, as I haven't used their router.
 
 #### Exit hook
 
+Backbone | Ember | React | UI-Router | Stateman | StateRouter
+-------- | ----- | ----- | --------- | -------- | -----------
+?        | ?     | ?     | ?         | ?        | ?
+
 When a route is being transitioned out, do you get a hook to do things?
 
 One thing to note is that this seems to be conflated with the ability to cancel/redirect in certain routers. In the React Router, for instance,
@@ -349,6 +463,10 @@ there's no distinct "exit" hook, but there is a hook called before you leave, wh
 to know whether this is a good or a bad thing!
 
 #### Update hook
+
+Backbone | Ember | React | UI-Router | Stateman | StateRouter
+-------- | ----- | ----- | --------- | -------- | -----------
+?        | ?     | ?     | ?         | ?        | ?
 
 An update hook is distinct from an enter hook, in that it is generally related to whether the "context" of a route changes. Consider a route
 with a URL `:bookId`. When the user transitions to this same route, but with a different ID, what happens?
