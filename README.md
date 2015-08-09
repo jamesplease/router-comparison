@@ -247,7 +247,7 @@ case of there being an optional segment. If you strongly disagree, let me know b
 
 Backbone | Ember | React | UI-Router | Stateman | StateRouter
 -------- | ----- | ----- | --------- | -------- | -----------
-✘        | ?     | ?     | ✘         | ✔        | ✘
+✘        | ✘     | ✘     | ✘         | ✔        | ✘
 
 An unnamed segment is a dynamic segment, or a splat, that doesn't require an identifying name. For
 instance, in the route URL `"books/:bookId"`, `bookId` is the name of the dynamic segment.
@@ -581,7 +581,7 @@ enter.
 
 Backbone | Ember | React | UI-Router | Stateman | StateRouter
 -------- | ----- | ----- | --------- | -------- | -----------
-?        | ?     | ✔     | ?         | ?        | ✔
+✘        | ✘     | ✔     | ✘         | ✘        | ✔
 
 Not found states let you specify unique not found states for each portion of your
 application.
