@@ -1,14 +1,26 @@
 # router-comparison
 
-A comparison of Router implementations.
+Wtf even are routers? This repository is an effort to answer that question.
 
 ### About
 
-Routers on the client play a major part in modern web apps. For many apps, the core logic of where the user is
-in the application is encoded in the router.
+Routers are playing an increasingly more important role in client side apps. For many apps,
+the application's response to a user moving through the app is dictated by the router. That is
+a huge responsibility!
 
-However, each popular library has its own implementation that differs from the others. I made this chart
-to compare them.
+But I have found that no two routers are the same. Some are even drastically different from others. I made this chart
+to compare some of the features of the most popular routers.
+
+### Why
+
+Nested routers are used in virtually every client side application these days. However, Backbone, my
+preferred library, does not have a nested router. In fact, you can't even build one off of Backbone's router,
+because of the way the code is structured (I'm working to fix this in Backbone v2.0.0).
+
+I want to build a new router that can be used in Backbone apps, and I want it to be great. By looking at every
+existing router, I can pluck the features I find most useful, and discard the ones that I find unnecessary.
+
+### Feature Table
 
 A description of each feature can be found below the table.
 
