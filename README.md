@@ -695,12 +695,17 @@ An update hook is distinct from an enter hook, in that it is generally related t
 "context" of a route changes. Consider a route with a URL `:bookId`. When the user transitions to
 this same route, but with a different ID, what happens?
 
-In some routers, the "enter" hook is called again. In other routers, only the "update" route is
-triggered.
+In Ember, the update hook is called `setup`. And the order of callbacks goes
+`exit => enter => setup`
 
-In Stateman, the update hook is called for every route in the tree of active routes. Ember only
-fires it on routes that explicitly have had a context change.
+`exit` starts at the deepest route, and works its way up. `enter` and `setup` work their way
+down the chain. `setup` begins on the first route whose context is changed.
+
+Stateman operates in a different way. The order goes `exit => update => enter`. And, unlike
+Ember, `update` is called on any route that is unchanged, even if the context hasn't changed.
+Also, the `update` hook in Stateman works its way the tree, like the `exit` hook.
 
 ##### Thoughts
 
-:+1: It is useful to differentiate entering and updating, I think.
+:+1: It is useful to differentiate entering and updating, I think. I tend to prefer Ember's
+hook structure.
