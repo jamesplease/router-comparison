@@ -2,7 +2,7 @@
 
 Wtf even are routers? This repository is an attempt to answer that question.
 
-### About
+## About
 
 Routers are playing an increasingly more important role in client side apps. For many apps, the
 response the app has to a user moving through the app is dictated by the router. That's a
@@ -11,7 +11,7 @@ substantial responsibility!
 Perhaps unsurprisingly, no two routers are the same. Some are even drastically different from
 others. I made this chart to compare some of the features of the most popular or notable routers.
 
-### Why
+## Why
 
 Nested routers are used in virtually every client side application these days. However, Backbone, my
 preferred library, does not have a nested router. In fact, you can't even build one off of
@@ -25,7 +25,7 @@ that I find unnecessary.
 At the end of each section, I'll have a "thoughts" section that explains my personal take on how to
 approach that feature. This will direct me when it comes time to build my own router.
 
-### Inspirations
+## Inspirations
 
 I'll often draw comparisons between particular routers, and that's usually because one of them was
 directly inspired by the other.
@@ -55,7 +55,7 @@ The following routers have been considered:
 
 ### Features
 
-#### DSL
+### DSL
 
 Backbone | Ember | React | UI-Router | Stateman | StateRouter
 -------- | ----- | ----- | --------- | -------- | -----------
@@ -80,7 +80,7 @@ DSLs are a no-brainer! The alternative would be writing regular expressions for 
 pretty gross, I think. Given that pretty much every router supports their own DSL, it seems like
 everyone is in agreement on this point.
 
-#### Regex for `:dynamic`
+### Regex for `:dynamic`
 
 Backbone | Ember | React | UI-Router | Stateman | StateRouter
 -------- | ----- | ----- | --------- | -------- | -----------
@@ -114,7 +114,7 @@ maximizing the number of routes that are sent off to the 404 route.
 When routers don't support this, the user is forced to write custom validation logic in each
 route, which can be annoying.
 
-#### Splats
+### Splats
 
 Backbone | Ember | React | UI-Router | Stateman | StateRouter
 -------- | ----- | ----- | --------- | -------- | -----------
@@ -154,7 +154,7 @@ by raising an issue! I'm curious to hear the use case.
 When it comes to using them as the only 404 abstraction, I think this is limiting. Refer to the
 404 abstraction section for more details.
 
-#### Optional segments
+### Optional segments
 
 Backbone | Ember | React | UI-Router | Stateman | StateRouter
 -------- | ----- | ----- | --------- | -------- | -----------
@@ -171,7 +171,7 @@ An example from Backbone, which uses parentheses:
 
 Shrug. Not particularly useful, I think. If you strongly disagree, let me know by raising an issue!
 
-#### Unnamed segments
+### Unnamed segments
 
 Backbone | Ember | React | UI-Router | Stateman | StateRouter
 -------- | ----- | ----- | --------- | -------- | -----------
@@ -186,7 +186,7 @@ Stateman added this feature, although it (surprisingly) does not exist in the UI
 
 I like being explicit, so I don't intend to add this feature to StateRouter.
 
-#### 404 abstraction
+### 404 abstraction
 
 Backbone | Ember | React | UI-Router | Stateman | StateRouter
 -------- | ----- | ----- | --------- | -------- | -----------
@@ -211,7 +211,7 @@ Only the React Router and my planned StateRouter will support per-route abstract
 
 :+1: for nested 404 abstractions. :-1: for global 404 abstractions.
 
-#### Regex instead of DSL
+### Regex instead of DSL
 
 Backbone | Ember | React | UI-Router | Stateman | StateRouter
 -------- | ----- | ----- | --------- | -------- | -----------
@@ -226,7 +226,7 @@ Backbone's minimalist ideas. It's comparable, I think, to allowing regex in the 
 I think this feature is inferior to allowing specifying the regex used by a dynamic segment, but it
 is easier to implement, so I can understand why Backbone went with it.
 
-#### Asynchronous
+### Asynchronous
 
 Backbone | Ember | React | UI-Router | Stateman | StateRouter
 -------- | ----- | ----- | --------- | -------- | -----------
@@ -243,7 +243,7 @@ asynchronous or synchronous: nothing really depends on them.
 Considering that most routers are intended to be used to orchestrate data fetching, it only makes
 sense that they're built to support asynchronous handlers!
 
-#### Sort: specificity
+### Sort: specificity
 
 Backbone | Ember | React | UI-Router | Stateman | StateRouter
 -------- | ----- | ----- | --------- | -------- | -----------
@@ -270,7 +270,7 @@ Ember is the only router that I know of to support the proper algorithm to suppo
 The specificity algorithm is intuitable by most developers, I think, and makes developing much
 simpler, so I think it's worthwhile to include.
 
-#### Sort: order added
+### Sort: order added
 
 Backbone | Ember | React | UI-Router | Stateman | StateRouter
 -------- | ----- | ----- | --------- | -------- | -----------
@@ -285,7 +285,7 @@ This is easier to implement than sorting by specificity, but more difficult for 
 with. However, for Routers that allow you override the regex used by dynamic segments, this is less
 of an issue.
 
-#### Nested routes
+### Nested routes
 
 Backbone | Ember | React | UI-Router | Stateman | StateRouter
 -------- | ----- | ----- | --------- | -------- | -----------
@@ -303,7 +303,7 @@ Backbone is the exception here.
 
 All contemporary routers support nesting because it is a super useful feature!
 
-#### Reusable routes
+### Reusable routes
 
 Backbone | Ember | React | UI-Router | Stateman | StateRouter
 -------- | ----- | ----- | --------- | -------- | -----------
@@ -315,7 +315,7 @@ Coming soon...
 
 Also coming soon :speak_no_evil:
 
-#### Optional history
+### Optional history
 
 Backbone | Ember | React | UI-Router | Stateman | StateRouter
 -------- | ----- | ----- | --------- | -------- | -----------
@@ -333,7 +333,7 @@ it.
 
 A must!
 
-#### Includes history
+### Includes history
 
 Backbone | Ember | React | UI-Router | Stateman | StateRouter
 -------- | ----- | ----- | --------- | -------- | -----------
@@ -350,7 +350,7 @@ Very useful for routers that are part of a framework. Because StateRouter is jus
 doesn't make sense to bundle up a history implementation for it. I'll make a few recommendations,
 though!
 
-#### Cancel navigation
+### Cancel navigation
 
 Backbone | Ember | React | UI-Router | Stateman | StateRouter
 -------- | ----- | ----- | --------- | -------- | -----------
@@ -370,7 +370,7 @@ Backbone provides a method that you can return false from to prevent transitioni
 
 Per-route cancellation is fantastic. Global cancellation...less so.
 
-#### Redirect navigation
+### Redirect navigation
 
 Backbone | Ember | React | UI-Router | Stateman | StateRouter
 -------- | ----- | ----- | --------- | -------- | -----------
@@ -387,7 +387,7 @@ they have been fixed.
 
 Same as above.
 
-#### Template links
+### Template links
 
 Backbone | Ember | React | UI-Router | Stateman | StateRouter
 -------- | ----- | ----- | --------- | -------- | -----------
@@ -403,7 +403,7 @@ This feature is super rad, if you haven't used it before!
 So, so good. But out of scope for a standalone router, I think. I plan to build a version of
 StateRouter exclusively for Backbone apps, and it will have template features.
 
-#### `.active` links
+### `.active` links
 
 Backbone | Ember | React | UI-Router | Stateman | StateRouter
 -------- | ----- | ----- | --------- | -------- | -----------
@@ -416,7 +416,7 @@ entered?
 
 :heart_eyes:
 
-#### Query params
+### Query params
 
 Backbone | Ember | React | UI-Router | Stateman | StateRouter
 -------- | ----- | ----- | --------- | -------- | -----------
@@ -428,7 +428,7 @@ Coming soon...
 
 Also coming soon\~
 
-#### 'Index' states
+### 'Index' states
 
 Backbone | Ember | React | UI-Router | Stateman | StateRouter
 -------- | ----- | ----- | --------- | -------- | -----------
@@ -451,7 +451,7 @@ Landing on "books.book" will activate "books" and "books.book", but not "books.i
 
 :+1:
 
-#### 'Loading' states
+### 'Loading' states
 
 Backbone | Ember | React | UI-Router | Stateman | StateRouter
 -------- | ----- | ----- | --------- | -------- | -----------
@@ -463,7 +463,7 @@ While transitions are in progress some routers give you a `loading` state to dis
 
 :+1:
 
-#### 'Error' states
+### 'Error' states
 
 Backbone | Ember | React | UI-Router | Stateman | StateRouter
 -------- | ----- | ----- | --------- | -------- | -----------
@@ -476,7 +476,7 @@ enter.
 
 :+1:
 
-#### 'Abstract' states
+### 'Abstract' states
 
 Backbone | Ember | React | UI-Router | Stateman | StateRouter
 -------- | ----- | ----- | --------- | -------- | -----------
@@ -492,7 +492,7 @@ This gives you a hook to, say, load a particular set of data for a group of sibl
 
 This seems to provide the same value as index states, but in a more confusing way.
 
-#### 'Not Found' states
+### 'Not Found' states
 
 Backbone | Ember | React | UI-Router | Stateman | StateRouter
 -------- | ----- | ----- | --------- | -------- | -----------
@@ -505,7 +505,7 @@ application.
 
 Very useful when done on a per-route basis.
 
-#### Pubsub
+### Pubsub
 
 Backbone | Ember | React | UI-Router | Stateman | StateRouter
 -------- | ----- | ----- | --------- | -------- | -----------
@@ -524,7 +524,7 @@ If the router is for another library that has pubsub, then I think that supplyin
 consistency makes sense. Otherwise, I think the majority of routing features don't benefit much
 from including pubsub.
 
-#### Scrolling
+### Scrolling
 
 Backbone | Ember | React | UI-Router | Stateman | StateRouter
 -------- | ----- | ----- | --------- | -------- | -----------
@@ -543,7 +543,7 @@ the route changes.
 Definitely useful, but I'm torn on whether or not it's a good idea to bundle this into the router
 directly!
 
-#### Group data fetching
+### Group data fetching
 
 Backbone | Ember | React | UI-Router | Stateman | StateRouter
 -------- | ----- | ----- | --------- | -------- | -----------
@@ -556,7 +556,7 @@ before views start rendering?
 
 I'm on the fence...
 
-#### Enter hook
+### Enter hook
 
 Backbone | Ember | React | UI-Router | Stateman | StateRouter
 -------- | ----- | ----- | --------- | -------- | -----------
@@ -574,7 +574,7 @@ but I'm only gathering this from their docs, as I haven't used their router.
 
 Ya, pretty useful. This is usually where you render the view.
 
-#### Exit hook
+### Exit hook
 
 Backbone | Ember | React | UI-Router | Stateman | StateRouter
 -------- | ----- | ----- | --------- | -------- | -----------
@@ -592,7 +592,7 @@ to know whether this is a good or a bad thing!
 
 Useful for teardown.
 
-#### Update hook
+### Update hook
 
 Backbone | Ember | React | UI-Router | Stateman | StateRouter
 -------- | ----- | ----- | --------- | -------- | -----------
@@ -616,14 +616,14 @@ fires it on routes that explicitly have had a context change.
 
 I omitted certain routers from the above chart.
 
-#### Ampersand.js
+### Ampersand.js
 
 Too similar to Backbone's.
 
-#### Marionette.js
+### Marionette.js
 
 Too similar to Backbone's.
 
-#### Angular.js v1
+### Angular.js v1
 
 Not very notable, and in the process of being completely replaced in Angular v2.
