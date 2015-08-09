@@ -36,11 +36,24 @@ React Router was inspired by Ember's router, and Stateman was inspired by UI-Rou
 
 StateRouter is the name of my work in progress router. It will likely be more similar to Ember's router than the UI-Router.
 
+### Routers
+
+The following routers have been considered:
+
+- [Backbone](http://backbonejs.org/#Router)
+- [Ember](http://guides.emberjs.com/v1.10.0/routing/)
+- [React](https://github.com/rackt/react-router)
+- [UI-Router](https://github.com/angular-ui/ui-router)
+- [Stateman](https://github.com/leeluolee/stateman)
+- StateRouter\*
+
+\* This is a new router that I'm working on to be used primarily in Backbone apps.
+
 ### Feature Table
 
 A description of each feature can be found below the table.
 
-Feature             | [Backbone](http://backbonejs.org/#Router) | [Ember](http://guides.emberjs.com/v1.10.0/routing/) | [React](https://github.com/rackt/react-router) | [UI-Router](https://github.com/angular-ui/ui-router) | [Stateman](https://github.com/leeluolee/stateman) | StateRouter**
+Feature             | Backbone | Ember | React | UI-Router | Stateman | StateRouter
 ------------------- | -------- | ----- | ----- | --------- | -------- | -----------
 DSL                 | ✔        | ✔     | ✔     | ✔         | ✔        | ✔
 Regex for `:dynamic`| ✘        | ✘     | ✘     | ✔         | ✔        | ✘
@@ -73,8 +86,6 @@ Exit hook           | ✘        | ✔     | ✘     | ✔         | ✔        
 Update hook         | ✘        | ✔     | ✘     | ✘         | ✔        | ✔ 
 
 \* Refer to the corresponding section below to see notes.
-
-\*\* StateRouter is a router I am building to be used by libraries that don't provide a nested router, like Backbone.
 
 ### Features
 
