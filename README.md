@@ -16,7 +16,6 @@ features of the most popular client side routers.
   - [Splats](#splats)
   - [Optional segments](#optional-segments)
   - [Unnamed segments](#unnamed-segments)
-  - [404 abstraction](#404-abstraction)
   - [Regex instead of DSL](#regex-instead-of-dsl)
   - [Asynchronous](#asynchronous)
   - [Sort: specificity](#sort-specificity)
@@ -36,6 +35,7 @@ features of the most popular client side routers.
   - ['Error' states](#error-states)
   - ['Not Found' states](#not-found-states)
   - [Pubsub](#pubsub)
+  - [Not found event](#not-found-event)
   - [Scrolling](#scrolling)
   - [Group data fetching](#group-data-fetching)
   - [Enter hook](#enter-hook)
@@ -211,8 +211,8 @@ matched unless nothing else does.
 Backbone isn't so smart. It matches on a first come, first serve basis, which requires you to place
 the 404 route last. In practice, this can end up being a tedious requirement to fulfill.
 
-Other libraries use one of two other [abstractions for 404s](#404-abstraction): either a special
-named route, and/or a pubsub event that is fired on the router itself.
+Other libraries use one of two other abstractions for 404s: either [a 404 state](#not-found-states),
+and/or [a pubsub event](#not-found-event) that is fired on the router itself.
 
 ##### Thoughts
 
@@ -222,8 +222,8 @@ much reason to **not** include splats, though, so I suppose I'll add them to the
 If you've used splats successfully in an app for a feature other than 404 routes, do let me know
 by raising an issue! I'm curious to hear the use case.
 
-When it comes to using them as the only 404 abstraction, I think this is limiting. Refer to the
-[404 abstraction section](#404-abstraction) for more details.
+When it comes to using them as the only 404 abstraction, I think this is limiting; I much prefer
+not found states.
 
 ### Optional segments
 
@@ -257,31 +257,6 @@ Stateman added this feature, although it does not exist in the UI-Router.
 ##### Thoughts
 
 I like being explicit, so I don't intend to add this feature to StateRouter.
-
-### 404 abstraction
-
-Backbone | Ember | React | UI-Router | Stateman | StateRouter
--------- | ----- | ----- | --------- | -------- | -----------
-✘        | ✘     | ✔     | ✔         | ✔        | ✔
-
-A 404 abstraction is anything other than splats to designate not found pages. The alternatives are:
-
-1. A specially named Route (React Router, Stateman)
-2. Pubsub events (UI-Router, Stateman)
-
-Within this category there are two distinct types of abstraction:
-
-1. Global 404 abstraction
-2. Per-route 404 abstraction
-
-Global 404 abstractions basically assume that you might have only one 404 page in your app. As you
-might expect, you might want context-specific 404 pages.
-
-Only the React Router and my planned StateRouter will support per-route abstractions. 
-
-##### Thoughts
-
-:+1: for nested 404 abstractions. :-1: for global 404 abstractions.
 
 ### Regex instead of DSL
 
@@ -611,6 +586,20 @@ those hooks are events.
 If the router is for another library that has pubsub, then I think that supplying events for
 consistency's sake makes sense. Otherwise, I think the majority of routing features don't benefit
 much from including pubsub.
+
+### Not found event
+
+Backbone | Ember | React | UI-Router | Stateman | StateRouter
+-------- | ----- | ----- | --------- | -------- | -----------
+✘        | ✘     | ✘     | ✔         | ✔        | ✘
+
+Not found events are triggered on the router directly, and give you a global hook to manage
+404s. This is less powerful than Not Found states, because it requires that you place all of your
+404 logic within a single callback.
+
+##### Thoughts
+
+:-1:
 
 ### Scrolling
 
