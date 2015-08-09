@@ -2,6 +2,43 @@
 
 Wtf even are routers? This repository is an attempt to answer that question.
 
+- About
+- Why
+- Routers Compared
+  - Inspiration
+  - Omissions
+- Features
+  - DSL
+  - Regex for `:dynamic`
+  - Splats
+  - Optional segments
+  - Unnamed segments
+  - 404 abstraction
+  - Regex instead of DSL
+  - Asynchronous
+  - Sort: specificity
+  - Sort: order added
+  - Nested routes
+  - Reusable routes
+  - Optional history
+  - Includes history
+  - Cancel navigation
+  - Redirect navigation
+  - Template links
+  - `.active` links
+  - Query params
+  - 'Index' states
+  - 'Loading' states
+  - 'Error' states
+  - 'Abstract' states
+  - 'Not Found' states
+  - Pubsub
+  - Scrolling
+  - Group data fetching
+  - Enter hook
+  - Exit hook
+  - Update hook
+
 ## About
 
 Routers are playing an increasingly more important role in client side apps. For many apps, the
@@ -25,7 +62,20 @@ that I find unnecessary.
 At the end of each section, I'll have a "thoughts" section that explains my personal take on how to
 approach that feature. This will direct me when it comes time to build my own router.
 
-## Inspirations
+## Routers Compared
+
+The following routers have been considered:
+
+- [Backbone](http://backbonejs.org/#Router)
+- [Ember](http://guides.emberjs.com/v1.10.0/routing/)
+- [React](https://github.com/rackt/react-router)
+- [UI-Router](https://github.com/angular-ui/ui-router)
+- [Stateman](https://github.com/leeluolee/stateman)
+- StateRouter\*
+
+\* This is a new router that I'm working on to be used primarily in Backbone apps.
+
+#### Inspirations
 
 I'll often draw comparisons between particular routers, and that's usually because one of them was
 directly inspired by the other.
@@ -40,18 +90,22 @@ React Router was inspired by Ember's router, and Stateman was inspired by UI-Rou
 StateRouter is the name of my work in progress router. It will likely be more similar to Ember's
 router than the UI-Router.
 
-## Routers
+#### Omissions
 
-The following routers have been considered:
+I omitted certain routers from the above chart.
 
-- [Backbone](http://backbonejs.org/#Router)
-- [Ember](http://guides.emberjs.com/v1.10.0/routing/)
-- [React](https://github.com/rackt/react-router)
-- [UI-Router](https://github.com/angular-ui/ui-router)
-- [Stateman](https://github.com/leeluolee/stateman)
-- StateRouter\*
+##### Ampersand.js
 
-\* This is a new router that I'm working on to be used primarily in Backbone apps.
+Too similar to Backbone's.
+
+##### Marionette.js
+
+Too similar to Backbone's.
+
+##### Angular.js v1
+
+I don't think many people use this (UI Router is more popular), and it's in the process of being
+completely replaced in Angular v2.
 
 ## Features
 
@@ -611,19 +665,3 @@ fires it on routes that explicitly have had a context change.
 ##### Thoughts
 
 :+1: It is useful to differentiate entering and updating, I think.
-
-### Omissions
-
-I omitted certain routers from the above chart.
-
-### Ampersand.js
-
-Too similar to Backbone's.
-
-### Marionette.js
-
-Too similar to Backbone's.
-
-### Angular.js v1
-
-Not very notable, and in the process of being completely replaced in Angular v2.
