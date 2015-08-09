@@ -60,10 +60,7 @@ v2.0.0](https://github.com/jashkenas/backbone/pull/3660)).
 
 I want to build a new router that can be used in Backbone apps, and I want it to be the best it can
 be. By looking at every existing router, I can pluck the features I find most useful, and discard
-the ones that I don't find as useful.
-
-At the end of each section, I'll have a "thoughts" section that explains my personal take on how to
-approach that feature. This will direct me when it comes time to build my own router.
+the ones that I find less so.
 
 ## Routers Compared
 
@@ -76,7 +73,7 @@ The following routers have been considered:
 - [Stateman](https://github.com/leeluolee/stateman)
 - StateRouter\*
 
-\*This is a new router that I'm working on to be used primarily in Backbone apps.
+\*This is a new standalone router that I'm building.
 
 #### Inspirations
 
@@ -181,10 +178,11 @@ Ember and React, on the other hand, don't offer anything like this. Shucks!
 ##### Thoughts
 
 This feature provides a great deal of value, I think. It allows you to move validation into the
-route itself, maximizing the number of routes that are sent off to the 404 route.
+route itself, maximizing the number of invalid requests that are automatically sent off to the 404
+route.
 
 When routers don't support this, the user is forced to write custom validation logic in each
-route, which is tedious.
+route, which is more work for the developer.
 
 ### Splats
 
@@ -249,7 +247,7 @@ case of there being an optional segment. If you strongly disagree, let me know b
 
 Backbone | Ember | React | UI-Router | Stateman | StateRouter
 -------- | ----- | ----- | --------- | -------- | -----------
-?        | ?     | ?     | ✘         | ✔        | ✘
+✘        | ?     | ?     | ✘         | ✔        | ✘
 
 An unnamed segment is a dynamic segment, or a splat, that doesn't require an identifying name. For
 instance, in the route URL `"books/:bookId"`, `bookId` is the name of the dynamic segment.
@@ -322,7 +320,7 @@ sense that they're built to support asynchronous handlers!
 
 Backbone | Ember | React | UI-Router | Stateman | StateRouter
 -------- | ----- | ----- | --------- | -------- | -----------
-✘        | ✔     | ?     | ✘         | ✘        | ✔
+✘        | ✔     | ✘     | ✘         | ✘        | ✔
 
 Route resolution is an important component of any router. If the user has two routes:
 
@@ -349,7 +347,7 @@ simpler, so I think it's worthwhile to include.
 
 Backbone | Ember | React | UI-Router | Stateman | StateRouter
 -------- | ----- | ----- | --------- | -------- | -----------
-✔        | ✘     | ?     | ✔         | ✔        | ✘ 
+✔        | ✘     | ✔     | ✔         | ✔        | ✘ 
 
 All other routers sort by the order added. Therefore, you must specify your dynamic segments and
 splats last, or use regexes to restrict what your dynamic segments match.
@@ -412,12 +410,14 @@ This feature is a must! It's a shame that the React Router and Stateman didn't r
 
 Backbone | Ember | React | UI-Router | Stateman | StateRouter
 -------- | ----- | ----- | --------- | -------- | -----------
-✔        | ✔     | ✔     | ?         | ✔        | ✘
+✔        | ✔     | ✔     | ✘*        | ✔        | ✘
 
 Whether or not the library includes a History implementation (to support, say, hash changes in old
 browsers).
 
 Generally, the routers that are bundled with a framework do include a history implementation.
+
+UI-Router uses Angular's `$location` server.
 
 ##### Thoughts
 
@@ -455,8 +455,9 @@ Backbone | Ember | React | UI-Router | Stateman | StateRouter
 Very similar to the above: can you stop the transition and instead redirect? The same hooks used for
 canceling is used for redirection in all libraries.
 
-The UI-Router had a few bugs with redirecting the last time I used it, and I do not believe that
-they have been fixed.
+The UI-Router had
+[a bad bug with redirecting](https://github.com/angular-ui/ui-router/issues/326#issuecomment-52731196)
+the last time I used it, and I do not believe that it has been fixed.
 
 ##### Thoughts
 
