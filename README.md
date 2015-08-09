@@ -40,7 +40,7 @@ React Router was inspired by Ember's router, and Stateman was inspired by UI-Rou
 StateRouter is the name of my work in progress router. It will likely be more similar to Ember's
 router than the UI-Router.
 
-### Routers
+## Routers
 
 The following routers have been considered:
 
@@ -53,7 +53,7 @@ The following routers have been considered:
 
 \* This is a new router that I'm working on to be used primarily in Backbone apps.
 
-### Features
+## Features
 
 ### DSL
 
