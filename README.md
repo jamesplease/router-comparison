@@ -44,9 +44,9 @@ features of the most popular client side routers.
 
 ## About
 
-Routers are playing an increasingly more important role in client side apps. For many apps, the
-response the app has to a user moving through the app is dictated by the router. That's a
-substantial responsibility!
+Routers are playing an increasingly more important role in client side apps. For many apps, what
+happens as a user moves throughout the app is dictated by the router. That's a substantial
+responsibility!
 
 Perhaps unsurprisingly, no two routers are the same. Some are even drastically different from
 others. I made this chart to compare some of the features of the most popular or notable routers.
@@ -54,13 +54,13 @@ others. I made this chart to compare some of the features of the most popular or
 ## Why
 
 Nested routers are used in virtually every client side application these days. However, Backbone, my
-preferred library, does not have a nested router. In fact, you can't even build one off of
-Backbone's router because of the way the code is structured (I'm working to fix this in Backbone
-v2.0.0).
+preferred library, does not have a nested router. In fact, you can't even build one from
+Backbone's router because of the way the code is structured ([I'm working to fix this in Backbone
+v2.0.0](https://github.com/jashkenas/backbone/pull/3660)).
 
-I want to build a new router that can be used in Backbone apps, and I want it to be great. By
-looking at every existing router, I can pluck the features I find most useful, and discard the ones
-that I find unnecessary.
+I want to build a new router that can be used in Backbone apps, and I want it to be the best it can
+be. By looking at every existing router, I can pluck the features I find most useful, and discard
+the ones that I don't find as useful.
 
 At the end of each section, I'll have a "thoughts" section that explains my personal take on how to
 approach that feature. This will direct me when it comes time to build my own router.
@@ -76,7 +76,7 @@ The following routers have been considered:
 - [Stateman](https://github.com/leeluolee/stateman)
 - StateRouter\*
 
-\* This is a new router that I'm working on to be used primarily in Backbone apps.
+\*This is a new router that I'm working on to be used primarily in Backbone apps.
 
 #### Inspirations
 
@@ -92,6 +92,16 @@ React Router was inspired by Ember's router, and Stateman was inspired by UI-Rou
 
 StateRouter is the name of my work in progress router. It will likely be more similar to Ember's
 router than the UI-Router.
+
+In chart form, the influence might look something like:
+
+```
+        Ember
+     /        \
+ UI-Router    React
+    |
+ Stateman
+```
 
 #### Omissions
 
