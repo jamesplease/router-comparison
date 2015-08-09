@@ -2,42 +2,42 @@
 
 Wtf even are routers? This repository is an attempt to answer that question.
 
-- About
-- Why
-- Routers Compared
-  - Inspiration
-  - Omissions
-- Features
-  - DSL
-  - Regex for `:dynamic`
-  - Splats
-  - Optional segments
-  - Unnamed segments
-  - 404 abstraction
-  - Regex instead of DSL
-  - Asynchronous
-  - Sort: specificity
-  - Sort: order added
-  - Nested routes
-  - Reusable routes
-  - Optional history
-  - Includes history
-  - Cancel navigation
-  - Redirect navigation
-  - Template links
-  - `.active` links
-  - Query params
-  - 'Index' states
-  - 'Loading' states
-  - 'Error' states
-  - 'Abstract' states
-  - 'Not Found' states
-  - Pubsub
-  - Scrolling
-  - Group data fetching
-  - Enter hook
-  - Exit hook
-  - Update hook
+- [About](#about)
+- [Why](#)
+- [Routers Compared](#routers-compared)
+  - [Inspiration](#inspiration)
+  - [Omissions](#omissions)
+- [Features](#features)
+  - [DSL](#dsl)
+  - [Regex for `:dynamic`](#regex-for-dynamic)
+  - [Splats](#splats)
+  - [Optional segments](#optional-segments)
+  - [Unnamed segments](#unnamed-segments)
+  - [404 abstraction](#404-abstraction)
+  - [Regex instead of DSL](#regex-instead-of-dsl)
+  - [Asynchronous](#asynchronous)
+  - [Sort: specificity](#sort-specificity)
+  - [Sort: order added](#sort-order-added)
+  - [Nested routes](#nested-routes)
+  - [Reusable routes](#reusable-routes)
+  - [Optional history](#optional-history)
+  - [Includes history](#includes-history)
+  - [Cancel navigation](#cancel-navigation)
+  - [Redirect navigation](#redirect-navigation)
+  - [Template links](#template-links)
+  - [`.active` links](#active-links)
+  - [Query params](#query-params)
+  - ['Index' states](#index-states)
+  - ['Loading' states](#loading-states)
+  - ['Error' states](#error-states)
+  - ['Abstract' states](#abstract-states)
+  - ['Not Found' states](#not-found-states)
+  - [Pubsub](#pubsub)
+  - [Scrolling](#scrolling)
+  - [Group data fetching](#group-data-fetching)
+  - [Enter hook](#enter-hook)
+  - [Exit hook](#exit-hook)
+  - [Update hook](#update-hook)
 
 ## About
 
