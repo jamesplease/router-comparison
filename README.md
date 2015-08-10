@@ -44,22 +44,21 @@ features of the most popular client side routers.
 
 ## About
 
-Routers are playing an increasingly more important role in client side apps. For many apps, what
-happens as a user moves throughout the app is dictated by the router. That's a substantial
-responsibility!
+Routers are playing an increasingly important role in client side apps. Many developers use the router
+to dictate what happens as the user navigates the application – a substantial responsibility!
 
-Perhaps unsurprisingly, no two routers are the same. Some are even drastically different from
-others. I made this chart to compare some of the features of the most popular or notable routers.
+Perhaps unsurprisingly, no two routers are the same. I made this chart to compare some of the features
+of the most popular or notable routers.
 
 ## Why
 
-Nested routers are used in virtually every client side application these days. However, Backbone, my
-preferred library, does not have a nested router. In fact, you can't even build one from
+Nested routers are used in virtually every client side application these days. However, my
+preferred library, Backbone, does not have a nested router. In fact, you can't even build one from
 Backbone's router because of the way the code is structured ([I'm working to fix this in Backbone
 v2.0.0](https://github.com/jashkenas/backbone/pull/3660)).
 
 I want to build a new router that can be used in Backbone apps, and I want it to be the best it can
-be. By looking at every existing router, I can pluck the features I find most useful, and discard
+be. By looking at these existing routers, I can pluck the features I find most useful, and discard
 the ones that I find less so.
 
 ## Routers Compared
