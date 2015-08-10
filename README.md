@@ -6,9 +6,9 @@ features of the most popular client side routers.
 ## Table of Contents
 
 - [About](#about)
-- [Why](#)
+- [Why](#why)
 - [Routers Compared](#routers-compared)
-  - [Inspiration](#inspiration)
+  - [Inspirations](#inspirations)
   - [Omissions](#omissions)
 - [Features](#features)
   - [DSL](#dsl)
@@ -96,7 +96,7 @@ In chart form, the flow of influence might look something like:
      /        \
  UI-Router    React
     |
- Stateman
+ Stateman              ---(all of them)---> StateRouter
 ```
 
 #### Omissions
