@@ -45,10 +45,10 @@ features of the most popular client side routers.
 ## About
 
 Routers are playing an increasingly important role in client side apps. Many developers use the router
-to dictate what happens as the user navigates the application – a substantial responsibility!
+to dictate what happens as the user navigates through the application – a substantial responsibility!
 
 Perhaps unsurprisingly, no two routers are the same. I made this chart to compare some of the features
-of the most popular or notable routers.
+of the most popular, or otherwise noteworthy, routers.
 
 ## Why
 
@@ -58,8 +58,8 @@ Backbone's router because of the way the code is structured ([I'm working to fix
 v2.0.0](https://github.com/jashkenas/backbone/pull/3660)).
 
 I want to build a new router that can be used in Backbone apps, and I want it to be the best it can
-be. By looking at these existing routers, I can pluck the features I find most useful, and discard
-the ones that I find less so.
+be. By examining existing routers, I can pluck the features I find most useful, and discard the ones
+that I find less so.
 
 ## Routers Compared
 
