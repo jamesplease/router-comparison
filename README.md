@@ -47,7 +47,7 @@ features of the most popular client side routers.
 Routers are playing an increasingly important role in client side apps. Many developers use the router
 to dictate what happens as the user navigates through the application – a substantial responsibility!
 
-Perhaps unsurprisingly, no two routers are the same. I made this chart to compare some of the features
+Perhaps unsurprisingly, no two routers are the same. I created this chart to compare some of the features
 of the most popular, or otherwise noteworthy, routers.
 
 ## Why
@@ -58,7 +58,7 @@ Backbone's router because of the way the code is structured ([I'm working to fix
 v2.0.0](https://github.com/jashkenas/backbone/pull/3660)).
 
 I want to build a new router that can be used in Backbone apps, and I want it to be the best it can
-be. By examining existing routers, I can pluck the features I find most useful, and discard the ones
+be. By examining existing routers I can pluck the features I find most useful, and discard the ones
 that I find less so.
 
 ## Routers Compared
@@ -79,24 +79,21 @@ The following routers have been considered:
 I'll often draw comparisons between particular routers, and that's usually because one of them was
 directly inspired by the other.
 
-Ember's router is the first nested router that I know of.
+Ember's router is the first nested router that I know of. UI-Router came shortly after, but it was largely an
+independent endeavor. Nevertheless, both share similarities with one another, which is to be expected
+considering their similar approach to routing.
 
-UI-Router came a few months later, and shares some similarities to Ember Router, but also has some
-unique features.
+Each of these original two routers has since inspired another popular router. Ember inspired the React Router,
+and UI-Router inspired Stateman.
 
-React Router was inspired by Ember's router, and Stateman was inspired by UI-Router.
+StateRouter is the name of my work-in-progress router. It's the reason that this document exists.
 
-StateRouter is the name of my work in progress router. It will likely be more similar to Ember's
-router than the UI-Router.
-
-In chart form, the flow of influence might look something like:
+As a chart, the flow of influence might look something like:
 
 ```
-        Ember
-     /        \
- UI-Router    React
-    |
- Stateman              ---(all of them)---> StateRouter
+ UI-Router     Ember
+    |            |
+ Stateman      React    ---(all of them)---> StateRouter
 ```
 
 #### Omissions
@@ -228,10 +225,13 @@ not found states.
 
 Backbone | Ember | React | UI-Router | Stateman | StateRouter
 -------- | ----- | ----- | --------- | -------- | -----------
-✔        | ✘     | ✔     | ✘         | ✘        | ✘
+✔        | ✘     | ✔     | ✘         | ✔        | ✘
 
 Optional segments are, well, exactly what you'd expect: segments that don't need to be there.
 They're generally designated by a `?` or parentheses.
+
+UI-Router also supports optional segments, albeit in a different fashion. When a parameter
+is given a default value (which can be set when you configure your route), then it is made optional.
 
 An example from Backbone, which uses parentheses:
 
@@ -261,17 +261,18 @@ I like being explicit, so I don't intend to add this feature to StateRouter.
 
 Backbone | Ember | React | UI-Router | Stateman | StateRouter
 -------- | ----- | ----- | --------- | -------- | -----------
-✔        | ✘     | ✘     | ✘         | ✘        | ✘
+✔        | ✘     | ✘     | ✔         | ✘        | ✘
 
-Backbone lets you write a regular expression instead of the DSL. As you would expect, this gets ugly
-quickly. Because of the small amount of code necessary to implement the feature, it does fit in with
+Backbone and UI-Router allow you to write a regular expression instead of the DSL. As you would expect, this gets
+ugly quickly. Because of the small amount of code necessary to implement the feature, it does fit in with
 Backbone's minimalist ideas. It's comparable, I think, to allowing
 [regex in the dynamic segments.]((#regex-for-dynamic))
 
 ##### Thoughts
 
-I think this feature is inferior to allowing specifying the regex used by a dynamic segment, but it
-is easier to implement, so I can understand why Backbone went with it.
+I can't think of a good reason to expose this feature if the router has a powerful enough DSL. UI-Router, for
+instance, supports overriding the regex of a dynamic segment, so it's rare that one would need to use
+less-readable Regex.
 
 ### Asynchronous
 
@@ -387,7 +388,7 @@ This feature is a must! It's a shame that the React Router and Stateman didn't r
 
 Backbone | Ember | React | UI-Router | Stateman | StateRouter
 -------- | ----- | ----- | --------- | -------- | -----------
-✔        | ✔     | ✔     | ✘*        | ✔        | ✘
+✔        | ✔     | ✔     | ✔*        | ✔        | ✘
 
 Whether or not the library includes a History implementation (to support, say, hash changes in old
 browsers).
@@ -461,7 +462,7 @@ StateRouter exclusively for Backbone apps, and it will have templating features 
 
 Backbone | Ember | React | UI-Router | Stateman | StateRouter
 -------- | ----- | ----- | --------- | -------- | -----------
-✘        | ✔     | ✔     | ✘         | ✘        | ✘
+✘        | ✔     | ✔     | ✔         | ✘        | ✘
 
 Does the router automatically append an active class to the links in the template when that state is
 entered?
