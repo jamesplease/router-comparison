@@ -81,12 +81,12 @@ directly inspired by the other.
 
 Ember's router is the first nested router that I know of. UI-Router came shortly after, but it was largely an
 independent endeavor. Nevertheless, both share similarities with one another, which is to be expected
-considering that both are nested routers.
+considering their similar approach to routing.
 
 Each of these original two routers has since inspired another popular router. Ember inspired the React Router,
 and UI-Router inspired Stateman.
 
-StateRouter is the name of my work-in-progress router. It's the reason that this document even exists.
+StateRouter is the name of my work-in-progress router. It's the reason that this document exists.
 
 As a chart, the flow of influence might look something like:
 
@@ -225,10 +225,13 @@ not found states.
 
 Backbone | Ember | React | UI-Router | Stateman | StateRouter
 -------- | ----- | ----- | --------- | -------- | -----------
-✔        | ✘     | ✔     | ✘         | ✘        | ✘
+✔        | ✘     | ✔     | ✘         | ✔        | ✘
 
 Optional segments are, well, exactly what you'd expect: segments that don't need to be there.
 They're generally designated by a `?` or parentheses.
+
+UI-Router also supports optional segments, albeit in a different fashion. When a parameter
+is given a default value (which can be set when you configure your route), then it is made optional.
 
 An example from Backbone, which uses parentheses:
 
@@ -268,8 +271,8 @@ Backbone's minimalist ideas. It's comparable, I think, to allowing
 ##### Thoughts
 
 I can't think of a good reason to expose this feature if the router has a powerful enough DSL. UI-Router, for
-instance, supports overriding the regex of a dynamic segment, so it's rare that one would need to use something
-as powerful (and ugly) as direct Regex.
+instance, supports overriding the regex of a dynamic segment, so it's rare that one would need to use
+less-readable Regex.
 
 ### Asynchronous
 
@@ -385,7 +388,7 @@ This feature is a must! It's a shame that the React Router and Stateman didn't r
 
 Backbone | Ember | React | UI-Router | Stateman | StateRouter
 -------- | ----- | ----- | --------- | -------- | -----------
-✔        | ✔     | ✔     | ✘*        | ✔        | ✘
+✔        | ✔     | ✔     | ✔*        | ✔        | ✘
 
 Whether or not the library includes a History implementation (to support, say, hash changes in old
 browsers).
@@ -459,7 +462,7 @@ StateRouter exclusively for Backbone apps, and it will have templating features 
 
 Backbone | Ember | React | UI-Router | Stateman | StateRouter
 -------- | ----- | ----- | --------- | -------- | -----------
-✘        | ✔     | ✔     | ✘         | ✘        | ✘
+✘        | ✔     | ✔     | ✔         | ✘        | ✘
 
 Does the router automatically append an active class to the links in the template when that state is
 entered?
