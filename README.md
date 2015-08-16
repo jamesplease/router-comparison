@@ -19,9 +19,11 @@ features of the most popular client side routers.
   - [Regex instead of DSL](#regex-instead-of-dsl)
   - [Asynchronous](#asynchronous)
   - [Sort: specificity](#sort-specificity)
+  - [Sort: deepest](#sort-deepest)
   - [Sort: order added](#sort-order-added)
   - [Nested routes](#nested-routes)
   - [Reset namespace](#reset-namespace)
+  - [Absolute URLs](#absolute-urls)
   - [Optional history](#optional-history)
   - [Includes history](#includes-history)
   - [Cancel navigation](#cancel-navigation)
@@ -396,6 +398,27 @@ called `comments` could not, for instance, be a child of `books.book`.
 
 I don't think that this is particularly useful. A friend of mine on the Ember Data team suggests
 that nobody use this feature, which is pretty telling, I think.
+
+### Absolute URLs
+
+Backbone | Ember | React | UI-Router | Stateman | StateRouter
+-------- | ----- | ----- | --------- | -------- | -----------
+✔        | ✘     | ✔     | ✔         | ✔        | ✔  
+
+A child route's URL is often appended to the parent's route. Are you able to specify that the child's
+URL is an absolute URL?
+
+Backbone's URLs are independent, so, yes, they are all absolute.
+
+In UI-Router and Stateman, you can use the `^` prefix to indicate that the URL is absolute.
+
+In React Router, prefixing with `/` indicates an absolute URL, whereas no prefix is not an
+absolute route.
+
+##### Thoughts
+
+I haven't worked on an app that would use this, but it is used by React and UI-Routers, so I'll
+likely include it.
 
 ### Optional history
 
