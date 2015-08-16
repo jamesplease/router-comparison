@@ -58,7 +58,7 @@ Backbone's router because of the way the code is structured ([I'm working to fix
 v2.0.0](https://github.com/jashkenas/backbone/pull/3660)).
 
 I want to build a new router that can be used in Backbone apps, and I want it to be the best it can
-be. By examining existing routers I can pluck the features I find most useful, and discard the ones
+be. By examining existing routers, I can pluck the features I find most useful, and discard the ones
 that I find less so.
 
 ## Routers Compared
@@ -72,12 +72,12 @@ The following routers have been considered:
 - [Stateman](https://github.com/leeluolee/stateman)
 - StateRouter\*
 
-\*This is a new standalone router that I'm building.
+\*This is a new stand-alone router that I'm building.
 
 #### Inspirations
 
-I'll often draw comparisons between particular routers, and that's usually because one of them was
-directly inspired by the other.
+Throughout this document, I'll often draw comparisons between routers. This is usually because one of them was
+inspired by, and modeled after, the other. For this reason, their differences are of particular interest to me.
 
 Ember's router is the first nested router that I know of. UI-Router came shortly after, but it was largely an
 independent endeavor. Nevertheless, both share similarities with one another, which is to be expected
@@ -113,6 +113,10 @@ Too similar to Backbone's.
 I don't think many people use this (UI Router is more popular), and it's in the process of being
 completely replaced in Angular v2.
 
+##### Angular.js v2
+
+The API for this router is still in flux, and it's difficult to find documentation on how it is intended to work.
+
 ## Features
 
 ### DSL
@@ -121,7 +125,7 @@ Backbone | Ember | React | UI-Router | Stateman | StateRouter
 -------- | ----- | ----- | --------- | -------- | -----------
 ✔        | ✔     | ✔     | ✔         | ✔        | ✔
 
-DSL stands for "domain specific language."" If you haven't heard that term before, don't worry: it's
+DSL stands for "domain specific language." If you haven't heard that term before, don't worry: it's
 a concept you may already be familiar with, even if you don't know the name. Example DSLs are the
 templating languages we use to output HTML, like Handlebars, Underscore, or Angular templates.
 
@@ -167,18 +171,18 @@ are like built-in regexes that you can reference. So, for instance, `'/calendar/
 valid route in UI-Router (but not Stateman).
 
 Although Backbone does not support this feature, it does support [using a regular expression for the
-whole route URL instead of the DSL.](#regex-instead-of-dsl)).
+whole route URL instead of the DSL.](#regex-instead-of-dsl).
 
 Ember and React, on the other hand, don't offer anything like this. Shucks!
 
 ##### Thoughts
 
-This feature provides a great deal of value, I think. It allows you to move validation into the
+This feature is super useful, I think. It allows the developer to move validation into the
 route itself, maximizing the number of invalid requests that are automatically sent off to the 404
 route.
 
-When routers don't support this, the user is forced to write custom validation logic in each
-route, which is more work for the developer.
+When routers don't support this, the developer is forced to write custom validation logic in each
+route, which is more work for them.
 
 ### Splats
 
@@ -186,7 +190,7 @@ Backbone | Ember | React | UI-Router | Stateman | StateRouter
 -------- | ----- | ----- | --------- | -------- | -----------
 ✔        | ✔     | ✔     | ✔         | ✘        | ✔
 
-Splats can be used to capture more than one segment of the URL, and are a denoted by a `*`. An
+Splats can be used to capture more than one segment of the URL, and are a denoted by `*`. An
 example is:
 
 `"/users/*splat"`
@@ -212,20 +216,23 @@ and/or [a pubsub event](#not-found-event) that is fired on the router itself.
 
 ##### Thoughts
 
-In the applications I have developed, splats have only been useful to match 404 routes. There's not
-much reason to **not** include splats, though, so I suppose I'll add them to the StateRouter.
+In the applications I have developed, splats have only been useful to match 404 routes. There might
+be some good use cases I simply haven't encountered, though, so I intend to include them in 
+StateRouter. Additionally, I intend for them to be the algorithm behind
+[404 states](#not-found-states) in StateRouter.
 
 If you've used splats successfully in an app for a feature other than 404 routes, do let me know
 by raising an issue! I'm curious to hear the use case.
 
-When it comes to using them as the only 404 abstraction, I think this is limiting; I much prefer
-not found states.
+Although 404 states can be implemented as thin abstraction layers over splats, I think there is
+value in that. An explicit 404 state is far more expressive than using splats directly to
+represent 404 states.
 
 ### Optional segments
 
 Backbone | Ember | React | UI-Router | Stateman | StateRouter
 -------- | ----- | ----- | --------- | -------- | -----------
-✔        | ✘     | ✔     | ✘         | ✔        | ✘
+✔        | ✘     | ✔     | ✔         | ✘        | ✔
 
 Optional segments are, well, exactly what you'd expect: segments that don't need to be there.
 They're generally designated by a `?` or parentheses.
@@ -239,8 +246,10 @@ An example from Backbone, which uses parentheses:
 
 ##### Thoughts
 
-Shrug. Not particularly useful, I think. A user can just as easily specify two routes to handle the
-case of there being an optional segment. If you strongly disagree, let me know by raising an issue!
+These haven't been particularly useful to me, but it seems like many other developers disagree. There's
+[an open issue](https://github.com/tildeio/route-recognizer/issues/60) to support these in Ember, for
+instance. So, because I don't want StateRouter to be the only router on the street that doesn't support
+these things, they'll def. be in there.
 
 ### Unnamed segments
 
@@ -263,16 +272,18 @@ Backbone | Ember | React | UI-Router | Stateman | StateRouter
 -------- | ----- | ----- | --------- | -------- | -----------
 ✔        | ✘     | ✘     | ✔         | ✘        | ✘
 
-Backbone and UI-Router allow you to write a regular expression instead of the DSL. As you would expect, this gets
-ugly quickly. Because of the small amount of code necessary to implement the feature, it does fit in with
-Backbone's minimalist ideas. It's comparable, I think, to allowing
+Backbone and UI-Router allow you to write a regular expression instead of the DSL. As you would expect,
+this gets ugly quickly. Because of the small amount of code necessary to implement the feature, it does
+fit in with Backbone's minimalist ideas. It's comparable, I think, to allowing
 [regex in the dynamic segments.]((#regex-for-dynamic))
 
 ##### Thoughts
 
-I can't think of a good reason to expose this feature if the router has a powerful enough DSL. UI-Router, for
-instance, supports overriding the regex of a dynamic segment, so it's rare that one would need to use
-less-readable Regex.
+This is another one of those features that is difficult for me to think up of a good use case for. If
+the DSL is powerful enough, it should not be necessary for a developer to use Regex directly.
+
+Nevertheless, I would be interested in supporting this feature, but it seems to be incompatible with
+[sorting by specificity](#sort-specificity), which I find more valuable.
 
 ### Asynchronous
 
@@ -284,7 +295,7 @@ Whether or not the route handlers are asynchronous. This is important for router
 nesting, because you'll often be fetching data in your handlers.
 
 Because Backbone's handlers are independent, it simply doesn't matter if your callback is
-asynchronous or synchronous: nothing really depends on them.
+asynchronous or synchronous: nothing really *depends* on them.
 
 ##### Thoughts
 
@@ -295,9 +306,10 @@ sense that they're built to support asynchronous handlers!
 
 Backbone | Ember | React | UI-Router | Stateman | StateRouter
 -------- | ----- | ----- | --------- | -------- | -----------
-✘        | ✔     | ✘     | ✘         | ✘        | ✔
+✘        | ✔     | ✘*    | ✘         | ✘        | ✔
 
-Route resolution is an important component of any router. If the user has two routes:
+Sorting is the order in which the router attempts to find a route. If the user has two
+routes corresponding to the following two URLs:
 
 `books/:bookId` and `books/author`
 
@@ -306,23 +318,42 @@ that they are added?
 
 For most routers, the answer to the above question is **yes**. `books/author` will
 need to be added to the router before `books/:bookId`, or else the dynamic segment
-will match the string.
+will always match the string.
 
 For routers that support [regex for dynamic segments](#regex-for-dynamic), this matters less because
 that feature provides a way to make your dynamic segments even more specific.
 
-Ember is the only router that I know of to support the proper algorithm to support this.
+Ember and my own router will implement this feature.
+
+React Router uses an algorithm that indirectly leads to sorting by specificity. Their
+algorithm attempts to match [the deepest route first.](#sort-deepest)
 
 ##### Thoughts
 
-The specificity algorithm is intuitable by most developers, I think, and makes developing much
-simpler, so I think it's worthwhile to include.
+:+1:!
+
+
+### Sort: deepest
+
+Backbone | Ember | React | UI-Router | Stateman | StateRouter
+-------- | ----- | ----- | --------- | -------- | -----------
+✘        | ✘*    | ✔     | ✘         | ✘        | ✘*
+
+Sorting by the deepest route is similar to sorting by specificity. It tries to
+match the most-nested routes first.
+
+Because deeper routes tend to be more specific, Ember's algorithm approximates
+this one.
+
+##### Thoughts
+
+Sort by specificity is more intuitable, I think, so I intend to use that instead.
 
 ### Sort: order added
 
 Backbone | Ember | React | UI-Router | Stateman | StateRouter
 -------- | ----- | ----- | --------- | -------- | -----------
-✔        | ✘     | ✔     | ✔         | ✔        | ✘ 
+✔        | ✘     | ✘     | ✔         | ✔        | ✘ 
 
 All other routers sort by the order added. Therefore, you must specify your dynamic segments and
 splats last, or use regexes to restrict what your dynamic segments match.
@@ -416,7 +447,8 @@ In Ember and React Router you get the opportunity for each route to specify whet
 should be cancelled or not.
 
 In UI-Router and Stateman, an event is fired on the router itself that allows you to cancel the
-transition, so it's more like a global setting.
+transition, so it's more like a global setting. v1 of the UI-Router (unreleased as of 8/16) will
+allow cancellation at any level of granularity.
 
 Backbone provides a method that you can return false from to prevent transitioning.
 
@@ -482,7 +514,7 @@ Coming soon...
 
 ##### Thoughts
 
-Also coming soon\~
+Coming soon...
 
 ### 'Index' states
 
@@ -551,6 +583,8 @@ Backbone | Ember | React | UI-Router | Stateman | StateRouter
 When an error occurs when doing a transition, some routers allow you to specify an `error` state to
 enter.
 
+UI-Router and Stateman provide events to manage this.
+
 ##### Thoughts
 
 :+1:
@@ -589,6 +623,10 @@ those hooks are events.
 If the router is for another library that has pubsub, then I think that supplying events for
 consistency's sake makes sense. Otherwise, I think the majority of routing features don't benefit
 much from including pubsub.
+
+One issue with pubsub is that everything is globally configured. Instead of associating logic
+with a particular route, it requires that you use if-then statements in a global callback to
+specify per-route behaviors.
 
 ### Not found event
 
@@ -630,7 +668,7 @@ useful as a default, or even as a feature to include in a core routing library.
 
 Backbone | Ember | React | UI-Router | Stateman | StateRouter
 -------- | ----- | ----- | --------- | -------- | -----------
-✘        | ✔     | ✔*    | ✘         | ✘        | ?
+✘        | ✔     | ✔*    | ✘*        | ✘        | ?
 
 If 3 routes are activated, and each specify data to be fetched, does all of the fetching happen
 before views start rendering?
@@ -638,6 +676,8 @@ before views start rendering?
 Ember does this out of the box. React, being just a view layer, naturally doesn't have any APIs
 directly related to fetching data. But with some pretty messy boilerplate code you can pull it off
 (see the examples under [the Router.run method](http://rackt.github.io/react-router/#Router.run))
+
+UI-Router's unreleased v1 will allow you to specify 'policies' to manage this.
 
 ##### Thoughts
 
@@ -661,9 +701,11 @@ In React, from what I understand it sort of just implicitly renders the componen
 there's much else that you'd want to do (or could do), but I'm only gathering this from their docs
 as I haven't used their router.
 
+In Ember, this is a no-op that you can use to include additional logic.
+
 ##### Thoughts
 
-Ya, a must-have. This is usually where you render the view.
+A good idea.
 
 ### Exit hook
 
@@ -695,7 +737,8 @@ An update hook is distinct from an enter hook, in that it is generally related t
 "context" of a route changes. Consider a route with a URL `:bookId`. When the user transitions to
 this same route, but with a different ID, what happens?
 
-In Ember, the update hook is called `setup`. And the order of callbacks goes
+In Ember, the update hook is the most important hook. It's where the view is rendered, for instance.
+The update hook in Ember is called `setup`. And the order of callbacks goes
 `exit => enter => setup`
 
 `exit` starts at the deepest route, and works its way up. `enter` and `setup` work their way
